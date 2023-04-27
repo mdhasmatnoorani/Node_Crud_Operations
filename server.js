@@ -91,14 +91,19 @@ app.delete('/products/:id', async(req, resp)=>{
 // mongoose.set("strictQuery", false)
 
 //Database Connection
-mongoose.connect('mongodb+srv://mdhasmatnoorani:Axxi0523@nodeapicrud.jzrlepn.mongodb.net/Node-Api-Crud')
-.then(()=>{
-    console.log("Connected to MongoDB")
+mongoose.connect(
+    "mongodb://0.0.0.0/node-crud",
+    {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+    })
+    .then(() => 
+    console.log('DB CONNECTED'))
     app.listen(3000, ()=>{
         console.log("Node App is running on Port 3000.")
     })
-}).catch((error)=>{
-    console.log(error)
-}
+    .catch((err) => { 
+        console.error(err); 
+    });
 
 )
